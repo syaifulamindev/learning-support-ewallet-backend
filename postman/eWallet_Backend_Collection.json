@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "4b6b8b59-82b5-48bd-9126-6878f06fecb6",
+		"name": "Vapor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2775612"
+	},
+	"item": [
+		{
+			"name": "midtrans",
+			"item": [
+				{
+					"name": "snap-transactions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "authorization",
+								"value": "Basic <base64>"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"transaction_details\": {\n    \"order_id\": \"<change with udid>\",\n    \"gross_amount\": 10000\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app.sandbox.midtrans.com/snap/v1/transactions",
+							"protocol": "https",
+							"host": [
+								"app",
+								"sandbox",
+								"midtrans",
+								"com"
+							],
+							"path": [
+								"snap",
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/midtrans/notifications",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transaction_time\": \"2024-08-18 22:53:32\",\n    \"transaction_status\": \"capture\",\n    \"transaction_id\": \"<transaction_id>\",\n    \"three_ds_version\": \"2\",\n    \"status_message\": \"midtrans payment notification\",\n    \"status_code\": \"200\",\n    \"signature_key\": \"<change signature key>\",\n    \"payment_type\": \"credit_card\",\n    \"order_id\": \"<change order-id>\",\n    \"metadata\": {},\n    \"merchant_id\": \"M311187\",\n    \"masked_card\": \"48111111-1114\",\n    \"gross_amount\": \"20000.00\",\n    \"fraud_status\": \"accept\",\n    \"expiry_time\": \"2024-08-26 22:53:32\",\n    \"eci\": \"05\",\n    \"currency\": \"IDR\",\n    \"channel_response_message\": \"Approved\",\n    \"channel_response_code\": \"00\",\n    \"card_type\": \"credit\",\n    \"bank\": \"cimb\",\n    \"approval_code\": \"1723996418417\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/midtrans/notifications",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"midtrans",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wallet",
+			"item": [
+				{
+					"name": "wallet/topup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 20000.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/wallet/topup",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wallet",
+								"topup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wallet",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Vapor\",\n    \"email\": \"test@vapor.codes\",\n    \"password\": \"secret42\",\n    \"confirmPassword\": \"secret42\",\n    \"phoneNumber\": \"087383748581\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/signup",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth/signin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "test@vapor.codes",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "secret42",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/auth/signin",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/me",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "transaction",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction/request",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 30000,\n    \"generate_qr\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/transaction/request",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								"request"
+							]
+						},
+						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Bearer",
+			"value": "Bearer <token>"
+		}
+	]
+}

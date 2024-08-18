@@ -65,6 +65,9 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
       # libxml2 \
     && rm -r /var/lib/apt/lists/*
 
+# Install qrencode
+RUN apt-get install qrencode
+
 # Create a vapor user and group with /app as its home directory
 RUN useradd --user-group --create-home --system --skel /dev/null --home-dir /app vapor
 
@@ -86,3 +89,5 @@ EXPOSE 8080
 # Start the Vapor service when the image is run, default to listening on 8080 in production environment
 ENTRYPOINT ["./App"]
 CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+
+
