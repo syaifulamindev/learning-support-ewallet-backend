@@ -1,6 +1,6 @@
 ## Learning Support: eWallet Backend
 
-Welcome to the **eWallet Backend** project! This repository provides a backend server designed specifically to support students learning iOS development. 
+Welcome to the **eWallet Backend** project! This repository provides a backend server designed specifically to support students learning iOS development.
 
 ### Overview
 
@@ -9,61 +9,62 @@ This backend is not a fully-fledged eWallet application but rather a foundationa
 ### Key Features
 
 - **Authentication**: JWT authentication mechanisms to help students understand user management and security.
-- **Wallet**: see saldo on walet
-- **Transaction**: create transaction request, pay, and update wallet
-- **Topup**: using midtrans payment gateway
-
+- **Wallet**: View wallet balance.
+- **Transaction**: Create transaction requests, process payments, and update wallet balances.
+- **Topup**: Integrate with the Midtrans payment gateway for wallet top-ups.
 
 ### How to Use
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/yourusername/ewallet-backend.git
+   git clone https://github.com/syaifulamindev/learning-support-ewallet-backend.git
    ```
 
 2. **Install Tools**:
    Navigate to the project directory and install the necessary dependencies.
 
-   install vapor (optional) 
-   ```sh
-   brew install vapor
-   ```
+   - Install Vapor (optional):
+     ```sh
+     brew install vapor
+     ```
 
-   install qrencode for generate qrcode, qrencode is also available on linux
-   ```sh
-   brew install qrencode
-   ```
+   - Install `qrencode` for generating QR codes (available on Linux as well):
+     ```sh
+     brew install qrencode
+     ```
 
-   install mongodb
-   ```sh
-   brew tap mongodb/brew
-   brew install mongodb-community@7.0
-   ```
-   
+   - Install MongoDB:
+     ```sh
+     brew tap mongodb/brew
+     brew install mongodb-community@7.0
+     ```
 
 3. **Run the Server**:
-    start mongodb as background process, please read mongodb documentatioin if this doesn't work
-    ```sh
-    mongod --config /opt/homebrew/etc/mongod.conf --fork
-    ```
+   - Start MongoDB as a background process. Please refer to the MongoDB documentation if this command does not work:
+     ```sh
+     mongod --config /opt/homebrew/etc/mongod.conf --fork
+     ```
 
-    for the first run, plese run migration script
-    ```sh
-        swift run App migrate
-    ```
+   - For the first run, execute the migration script:
+     ```sh
+     swift run App migrate
+     ```
 
-    after that you can run via xcode with play button or via terminal
-    ```sh
-    swift run
-    ```
+   - After that, you can run the server via Xcode (using the play button) or via the terminal:
+     ```sh
+     swift run
+     ```
 
 4. **Configure Payment Gateway**:
-    We use midtrans for topup.
-    
-    - Setup Payment notification URL, goto https://dashboard.sandbox.midtrans.com/settings/payment/notification
-    and change the Payment notification URL to <base_url>/midtrans/notifications
-    - Create .env file in root folder, and create SERVER_KEY='<server_key>', get your server key at https://dashboard.sandbox.midtrans.com/settings/config_info
-
+   We use Midtrans for top-ups.
+   
+   - Set up the Payment Notification URL by going to [Midtrans Dashboard](https://dashboard.sandbox.midtrans.com/settings/payment/notification) and changing the Payment Notification URL to `<base_url>/midtrans/notifications`.
+   - Create a `.env` file in the root folder with the following content:
+     ```env
+     SERVER_KEY='<your_server_key>'
+     ```
+     Get your server key from [Midtrans Dashboard](https://dashboard.sandbox.midtrans.com/settings/config_info).
+     
 ### Postman Collection
 
 To help you test the API endpoints, a Postman collection is available. You can import this collection into Postman to get a pre-configured set of requests.
