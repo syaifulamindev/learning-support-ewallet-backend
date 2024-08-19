@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CryptoKit
+import Vapor
 
 extension Data {
   var jsonObject: Any? {
