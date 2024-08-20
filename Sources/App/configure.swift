@@ -21,7 +21,12 @@ public func configure(_ app: Application) async throws {
   app.migrations.add(Transaction.Migration())
 
   await app.jwt.keys.add(hmac: "secret2", digestAlgorithm: .sha256)
+  // Set hostname from environment variable if it exists
+   if let hostname = Environment.get("SERVER_HOSTNAME") {
+     app.http.server.configuration.hostname = hostname
+   }
 
   // register routes
   try routes(app)
+  
 }
