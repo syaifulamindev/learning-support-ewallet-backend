@@ -20,7 +20,7 @@
 							},
 							{
 								"key": "authorization",
-								"value": "Basic <base64>"
+								"value": "Basic U0ItTWlkLXNlcnZlci1OQmYzMjljSTRlTWtwNVA0VEdBZGNKSlA6"
 							},
 							{
 								"key": "content-type",
@@ -64,7 +64,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer <token>"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJWYXBvcjIiLCJleHAiOjE3MjYyOTY3MDkuMjkwMjgxMSwiaWQiOiJEMUI3NzkzRi00RUMwLTREMjktODVFMC1ERjJCMjJEMEJFMkYifQ.3hCnrancOiJOVqr8iyhi4UNQNad6ttk0tplXscGDAoQ"
 							}
 						],
 						"body": {
@@ -171,7 +171,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"Vapor\",\n    \"email\": \"test@vapor.codes\",\n    \"password\": \"secret42\",\n    \"confirmPassword\": \"secret42\",\n    \"phoneNumber\": \"087383748581\"\n}"
+							"raw": "{\n    \"username\": \"Vapor 2\",\n    \"email\": \"test2@vapor.codes\",\n    \"password\": \"secret42\",\n    \"confirmPassword\": \"secret42\",\n    \"phoneNumber\": \"08123456782\"\n}"
 						},
 						"url": {
 							"raw": "{{baseurl}}/auth/signup",
@@ -194,7 +194,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "test@vapor.codes",
+									"value": "test1@vapor.codes",
 									"type": "string"
 								},
 								{
@@ -309,6 +309,109 @@
 						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
 					},
 					"response": []
+				},
+				{
+					"name": "transaction/pay",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 30000,\n    \"generate_qr\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/transaction/pay",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								"pay"
+							]
+						},
+						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "contact/add",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"08123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/contact/add",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"contact",
+								"add"
+							]
+						},
+						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
+					},
+					"response": []
+				},
+				{
+					"name": "contact",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/contact",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"contact"
+							]
+						},
+						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
+					},
+					"response": []
 				}
 			]
 		}
@@ -316,7 +419,7 @@
 	"variable": [
 		{
 			"key": "Bearer",
-			"value": "Bearer <token>"
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwic3ViIjoidmFwb3IiLCJleHAiOjE3MjI1Mzc1NTAuNDk4OTk2fQ.ohUSdPEPi8R7RwnS_hcA5DzDbi0gw3wxzqklcwy9m2E"
 		}
 	]
 }
