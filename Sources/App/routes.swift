@@ -12,6 +12,7 @@ func routes(_ app: Application) throws {
   try app.register(collection: WalletController())
   try app.register(collection: MidtransWebhookController())
   try app.register(collection: TransactionController())
+  try app.register(collection: ContactController())
 
   let tokenProtected = app.grouped(
     UserToken.authenticator(),

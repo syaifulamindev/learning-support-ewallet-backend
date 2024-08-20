@@ -8,3 +8,5 @@ struct SuccessResponse<Data: Codable>: Content {
   let message: String
   let data: Data?
 }
+
+struct NoValue: Codable { }

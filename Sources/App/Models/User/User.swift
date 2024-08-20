@@ -20,7 +20,10 @@ final class User: Model, Content, @unchecked Sendable {
   
   @Field(key: "password_hash")
   var passwordHash: String
-  
+
+  @Siblings(through: Contact.self, from: \.$user, to: \.$contact)
+  var contacts: [User]
+
   init(id: UUID? = nil, username: String, email: String, phoneNumber: String, passwordHash: String) {
     self.id = id
     self.username = username
