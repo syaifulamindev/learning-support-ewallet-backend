@@ -40,6 +40,23 @@ This backend is not a fully-fledged eWallet application but rather a foundationa
      ```
 
 3. **Run the Server**:
+   - set replication in mongod.conf for ex:
+   ```yaml
+      systemLog:
+        destination: file
+        path: /opt/homebrew/var/log/mongodb/mongo.log
+        logAppend: true
+      storage:
+        dbPath: /opt/homebrew/var/mongodb
+      net:
+        bindIp: 127.0.0.1, ::1, mongo2.replset.member
+        ipv6: true
+      replication:
+        replSetName: rs0
+        oplogSizeMB: 2000
+     
+   ```
+   source: (Add Replication mongodb)[https://stackoverflow.com/questions/51461952/mongodb-v4-0-transaction-mongoerror-transaction-numbers-are-only-allowed-on-a]
    - Start MongoDB as a background process. Please refer to the MongoDB documentation if this command does not work:
      ```sh
      mongod --config /opt/homebrew/etc/mongod.conf --fork

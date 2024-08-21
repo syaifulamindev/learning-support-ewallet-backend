@@ -11,7 +11,7 @@ extension UserToken {
                 .id()
                 .field("value", .string, .required)
                 .field("user_id", .uuid, .required, .references("users", "id"))
-                .unique(on: "value")
+                .unique(on: "user_id")
                 .create()
         }
 

@@ -306,7 +306,7 @@
 								"request"
 							]
 						},
-						"description": "qrcode itu payload diubah jadi base64  \n  \nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi payload"
+						"description": "qrcode itu payload diubah jadi base64\n\nkalau mau generate qrcode sendiri di local generate_qr diganti false saja, yang digenerate itu isi transaction_id"
 					},
 					"response": []
 				},
@@ -325,7 +325,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 30000,\n    \"generate_qr\": true\n}",
+							"raw": "{\n    \"transaction_id\": \"1AC9D89A-04F3-4751-A144-EEB213CCE109\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -366,7 +366,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone_number\": \"08123456789\"\n}",
+							"raw": "{\n    \"phone_number\": \"08123456782\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
