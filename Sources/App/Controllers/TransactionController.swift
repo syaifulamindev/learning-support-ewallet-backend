@@ -124,12 +124,12 @@ struct TransactionController: RouteCollection {
       throw GenericError("Your balance is insufficient")
     }
 
-    let transactionAmomunt = transaction.amount.formatted(.currency(code: "IDR"))
+    let transactionAmomunt = transaction.amount
 
     transaction.from = payload.userId
     transaction.status = .completed
-    senderWallet.amount -= transaction.amount
-    receiverWallet.amount += transaction.amount
+    senderWallet.amount -= transactionAmomunt
+    receiverWallet.amount += transactionAmomunt
 
     try await req.db.withConnection { db in
       try await transaction.save(on: db)
@@ -150,7 +150,7 @@ struct TransactionController: RouteCollection {
 
     return SuccessResponse(
       success: true,
-      message: "Your payment to \(receiverUser.username) for \(transactionAmomunt) is Succeeded",
+      message: "Your payment to \(receiverUser.username) for \(Formatter.toIDR(transactionAmomunt)) is Succeeded",
       data: nil)
   }
 
